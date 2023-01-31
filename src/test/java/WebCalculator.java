@@ -1,6 +1,9 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WindowType;
 import org.testng.Assert;
+
+import java.util.ArrayList;
 
 public class WebCalculator {
     private WebDriver driver;
@@ -32,6 +35,15 @@ public class WebCalculator {
         int screenResult = Integer.parseInt(driver.findElement(By.id("screen")).getText());
         Assert.assertEquals(screenResult,calculation);
 
+    }
+
+    public void openMultipleBrowsers(){
+        driver.get("https://www.google.com/");
+        driver.switchTo().newWindow(WindowType.TAB).get("https://www.youtube.com/");
+        driver.switchTo().newWindow(WindowType.TAB).get("https://translate.google.com/");
+        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(0));
+        driver.switchTo().window(tabs.get(1));
     }
 
     public void closeAll(){

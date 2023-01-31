@@ -15,5 +15,6 @@ public class POMTest {
         webCalculator.num6IsDisplay();
         webCalculator.calculation();
         webCalculator.closeAll();
+        webCalculator.openMultipleBrowsers();
     }
 }
